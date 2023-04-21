@@ -22,7 +22,7 @@ public class City {
     private String information;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_id")
+    @JoinColumn(name = "country_id")
     @JsonIgnore //ngan lap vo han
     private Country country;
 

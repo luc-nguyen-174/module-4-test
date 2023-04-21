@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>City</title>
+</head>
+<body>
+
+<div align="center">
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>#</th>
+            <th>Thành phố</th>
+            <th>Quốc gia</th>
+            <th></th>
+        </tr>
+        <tr th:each="c: ${city}">
+            <td th:text="${c.getId()}"></td>
+            <td th:text="${c.getCityName()}"></td>
+            <td th:text="${c.country.country}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
