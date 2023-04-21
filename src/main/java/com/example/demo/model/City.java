@@ -11,13 +11,13 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Size(max = 50)
+    @Size(max = 50,message = "Đã nhập vào quá số kí tự cho phép. Ít hơn 50 kí tự.")
     private String cityName;
-    @Positive
+    @Positive(message = "Nhập vào số dương!")
     private Long acreage;
-    @Positive
+    @Positive(message = "Nhập vào số dương!")
     private Long population;
-    @Positive
+    @Positive(message = "Nhập vào số dương!")
     private Long GDP;
     private String information;
 
