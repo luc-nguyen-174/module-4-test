@@ -12,7 +12,7 @@ public class Country {
 
     private String country;
 
-    @OneToMany(targetEntity = City.class, fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = City.class, fetch = FetchType.EAGER)
     private List<City> cities;
 
     public Country() {

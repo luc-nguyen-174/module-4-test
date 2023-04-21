@@ -30,14 +30,23 @@ public class CityController {
     public ModelAndView getAllCity() {
         Iterable<City> city = cityService.findAll();
         ModelAndView modelAndView = new ModelAndView("/index");
-        modelAndView.addObject("city", city);
+        modelAndView.addObject("cities", city);
         return modelAndView;
     }
 
     @GetMapping("/create")
     public ModelAndView addNewCity() {
         ModelAndView modelAndView = new ModelAndView("/create");
-        modelAndView.addObject("city", new City());
+        modelAndView.addObject("cities", new City());
+        return modelAndView;
+    }
+    @PostMapping("/save")
+    public ModelAndView save(@ModelAttribute("cities") City city) {
+        cityService.save(city);
+
+        ModelAndView modelAndView = new ModelAndView("/create");
+        modelAndView.addObject("cities", new City());
+        modelAndView.addObject("message", "New city added successfully. \nBack to list after 3s.");
         return modelAndView;
     }
 

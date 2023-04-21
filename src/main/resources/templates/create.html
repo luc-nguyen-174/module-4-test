@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add New City</title>
 </head>
 <body>
-
+<center>
+    <h1>Create Category</h1>
+    <a th:href="@{/cities}">Back To List</a>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+        <script th:inline="javascript">
+            setTimeout(function () {
+                window.location.href = /*[[@{/categories}]]*/ '#';
+            }, 3000);
+        </script>
+    </th:block>
+</center>
+<div align="center">
+    <form th:action="@{/categories/save}" th:object="${categories}" method="post">
+        <table>
+            <tr>
+                <td>Category</td>
+                <td><input type="text" th:field="*{category}"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Save">
+    </form>
+</div>
 </body>
 </html>

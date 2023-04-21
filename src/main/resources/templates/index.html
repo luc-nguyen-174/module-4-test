@@ -5,6 +5,14 @@
     <title>City</title>
 </head>
 <body>
+<div>
+    <div>
+        <h2>Danh sách thành phố</h2>
+    </div>
+    <div>
+        <a th:href="@{/cities/create}">Add new city</a>&nbsp;
+    </div>
+</div>
 
 <div align="center">
     <table border="1" cellpadding="5">
@@ -14,10 +22,15 @@
             <th>Quốc gia</th>
             <th></th>
         </tr>
-        <tr th:each="c: ${city}">
+        <tr th:each="c: ${cities}">
             <td th:text="${c.getId()}"></td>
             <td th:text="${c.getCityName()}"></td>
             <td th:text="${c.country.country}"></td>
+            <td>
+                <button id="delete" onclick="return confirm('Are you sure?')">
+                    <a th:href="@{/cities/delete/__${c.id}__}">Xóa</a>
+                </button>
+            </td>
         </tr>
     </table>
 </div>
