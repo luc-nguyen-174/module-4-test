@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Information</title>
 </head>
 <body>
+<div align="center">
 
+    <a href="/cities/index">Back to list</a>
+    <table border="1" cellpadding="5">
+        <tr>
+            <td>Tên: </td>
+            <td>Quốc gia: </td>
+            <td>Diện tích: </td>
+            <td>Dân số: </td>
+            <td>GDP</td>
+            <td>Giới thiệu:</td>
+        </tr>
+        <tr>
+            <td th:text="${cities.getCityName()}"></td>
+            <td th:text="${cities.getCountry().country}"></td>
+            <td th:text="${cities.getAcreage()}"></td>
+            <td th:text="${cities.getPopulation()}"></td>
+            <td th:text="${cities.getGDP()}"></td>
+            <td th:text="${cities.getInformation()}"></td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>

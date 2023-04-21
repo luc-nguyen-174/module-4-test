@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit City</title>
 </head>
 <body>
+<div align="center">
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+        <script th:inline="javascript">
+            setTimeout(function () {
+                window.location.href = /*[[@{/cities/index}]]*/ '#';
+            }, 3000);
+        </script>
+    </th:block>
+    <form th:object="${cities}" th:action="@{/cities/edit}" th:method="post">
+        <table border="1" cellpadding="5">
+            <input th:type="hidden" th:field="*{id}">
+            <tr>
+                <td><label>Tên: </label></td>
+                <td><input type="text" th:field="*{cityName}"></td>
+            </tr>
+            <tr>
+                <td>Quốc gia:</td>
+                <td>
+                    <select th:field="*{country}">
+                        <option th:each="c: ${countries}" th:value="${c.id}" th:text="${c.country}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Diện tích: </td>
+                <td><input type="text" th:field="*{acreage}"></td>
+            </tr>
+            <tr>
+                <td>Dân số: </td>
+                <td><input type="text" th:field="*{population}"></td>
+            </tr>
+            <tr>
+                <td>GDP: </td>
+                <td><input type="text" th:field="*{GDP}"></td>
+            </tr>
+            <tr>
+                <td>Giới thiệu: </td>
+                <td><textarea th:field="*{information}"></textarea></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit">UPDATE</button>
+                    <button><a th:href="@{/cities/index}">CANCEL</a></button>
+                </td>
 
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>

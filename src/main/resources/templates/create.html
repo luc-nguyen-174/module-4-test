@@ -31,7 +31,7 @@
                 </td>
                 <td>
                     <select id="country" name="country" >
-                        <option value="">-- Select category --</option>
+                        <option value="">-- Select city --</option>
                         <option th:each="country : ${countries}" th:value="${country.id}"
                                 th:text="${country.country}"></option>
                     </select>
@@ -51,7 +51,7 @@
             </tr>
             <tr>
                 <td>Giới thiệu: </td>
-                <td><input type="text" th:field="*{information}"></td>
+                <td><textarea th:field="*{information}"></textarea></td>
             </tr>
         </table>
         <input type="submit" value="Save">

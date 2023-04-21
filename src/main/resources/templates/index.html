@@ -24,11 +24,15 @@
         </tr>
         <tr th:each="c: ${cities}">
             <td th:text="${c.getId()}"></td>
-            <td th:text="${c.getCityName()}"></td>
+            <td><a th:href="@{/cities/view/{id}(id=${c.getId()})}" th:text="${c.getCityName()}"></a></td>
             <td th:text="${c.country.country}"></td>
             <td>
                 <button id="delete" onclick="return confirm('Are you sure?')">
                     <a th:href="@{/cities/delete/__${c.id}__}">Xóa</a>
+                </button>
+
+                <button id="edit">
+                    <a th:href="@{/cities/edit/__${c.id}__}">Edit</a>
                 </button>
             </td>
         </tr>

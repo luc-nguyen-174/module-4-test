@@ -55,7 +55,7 @@ public class CityController {
         Optional<City> city = cityService.findById(id);
         if (city.isPresent()) {
             ModelAndView modelAndView = new ModelAndView("/edit");
-            modelAndView.addObject("city", city);
+            modelAndView.addObject("cities", city.get());
             return modelAndView;
         } else {
             return new ModelAndView("/error.404");
@@ -83,8 +83,8 @@ public class CityController {
         if (city.isEmpty()) {
             return new ModelAndView("/error.404");
         }
-        ModelAndView modelAndView = new ModelAndView("/index");
-        modelAndView.addObject("city", city);
+        ModelAndView modelAndView = new ModelAndView("/information");
+        modelAndView.addObject("cities", city.get());
         return modelAndView;
     }
 }
