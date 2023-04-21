@@ -7,22 +7,51 @@
 <body>
 <center>
     <h1>Create Category</h1>
-    <a th:href="@{/cities}">Back To List</a>
+    <a th:href="@{/cities/index}">Back To List</a>
     <th:block th:if="${message}">
         <p th:text="${message}"></p>
         <script th:inline="javascript">
             setTimeout(function () {
-                window.location.href = /*[[@{/categories}]]*/ '#';
+                window.location.href = /*[[@{/cities/index}]]*/ '#';
             }, 3000);
         </script>
     </th:block>
 </center>
 <div align="center">
-    <form th:action="@{/categories/save}" th:object="${categories}" method="post">
+    <h2>Thêm thành phố</h2>
+    <form th:action="@{/cities/save}" th:object="${cities}" method="post">
         <table>
             <tr>
-                <td>Category</td>
-                <td><input type="text" th:field="*{category}"></td>
+                <td>Tên: </td>
+                <td><input type="text" th:field="*{cityName}"></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="country">Quốc gia:</label>
+                </td>
+                <td>
+                    <select id="country" name="country" >
+                        <option value="">-- Select category --</option>
+                        <option th:each="country : ${countries}" th:value="${country.id}"
+                                th:text="${country.country}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Diện tích: </td>
+                <td><input type="text" th:field="*{acreage}"></td>
+            </tr>
+            <tr>
+                <td>Dân số: </td>
+                <td><input type="text" th:field="*{population}"></td>
+            </tr>
+            <tr>
+                <td>GDP: </td>
+                <td><input type="text" th:field="*{GDP}"></td>
+            </tr>
+            <tr>
+                <td>Giới thiệu: </td>
+                <td><input type="text" th:field="*{information}"></td>
             </tr>
         </table>
         <input type="submit" value="Save">
