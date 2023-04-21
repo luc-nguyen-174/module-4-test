@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/cities")
+@RequestMapping(value = {"/cities","/"})
 public class CityController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class CityController {
         return countryService.findAll();
     }
 
-    @GetMapping("/index")
+    @GetMapping(value = {"/index","","/"})
     public ModelAndView getAllCity() {
         Iterable<City> city = cityService.findAll();
         ModelAndView modelAndView = new ModelAndView("/index");
